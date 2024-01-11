@@ -34,13 +34,37 @@ class _MyHomeState extends State<MyHome> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Switch(
-              value: statusSwitch,
-              onChanged: (value) {
-                setState(() {});
-              },
-            )
+            Container(
+              color: Colors.grey,
+              // height: 100,
+              // width: 1000,
+              child: Switch(
+                activeColor: Colors.amber,
+                activeTrackColor: Colors.green,
+                activeThumbImage: AssetImage('images/correct.png'),
+                inactiveThumbColor: Colors.indigo,
+                inactiveTrackColor: Colors.red,
+                inactiveThumbImage: AssetImage('images/wrong.png'),
+                value: statusSwitch,
+                onChanged: (value) {
+                  setState(() {
+                    statusSwitch = !statusSwitch;
+                  });
+                  print(statusSwitch);
+                },
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Text(
+              (statusSwitch == true) ? 'Switch On' : 'Switch Off',
+              style: TextStyle(
+                fontSize: 35,
+              ),
+            ),
           ],
         ),
       ),
